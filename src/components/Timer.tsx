@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
 
-export default function Timer() {
+interface Props{
+  stopped: boolean;
+}
+
+export default function Timer({stopped }:Props) {
     const [seconds, setSeconds] = useState<number>(0);
   
     useEffect(() => {
       const interval = setInterval(() => {
-        setSeconds((prevSeconds) => prevSeconds + 1);
+        if (!stopped) {
+          setSeconds((prevSeconds) => prevSeconds + 1);
+        }
       }, 1000);
   
       return () => clearInterval(interval);
-    }, []);
+    }, [stopped]);
   
-    return <h2>Timer: {seconds}</h2>;
+    return <h2>Seconds: {seconds}</h2>;
   };

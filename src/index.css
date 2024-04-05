@@ -2,5 +2,27 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  font-size: 20px;
 
+}
+.profile{
+  width: 5%;
+}
+
+img{
+  width: 100%;
+}
+
+.search{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 4rem;
+  justify-content: space-between;
+}
+
+.search1{
+  width: 4%;
+}
+.search2, .search3{
+  width: 10%;
 }
