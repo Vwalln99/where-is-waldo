@@ -1,9 +1,10 @@
-// Import the functions you need from the SDKs you need
+// Importe die Funktionen, die du benötigst
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
-// Your web app's Firebase configuration
+// Konfiguration für deine Firebase-App
 const firebaseConfig = {
   apiKey: "AIzaSyB6oYXfyoeGLixcFMV3Kyn98zp2uye7hDw",
   authDomain: "where-s-waldo-e7bad.firebaseapp.com",
@@ -13,10 +14,33 @@ const firebaseConfig = {
   appId: "1:399263404205:web:5992ca4832b04808edf624",
 };
 
-import { getAuth } from "firebase/auth";
-import { getStorage } from "firebase/storage";
+// Initialisiere Firebase-App
+const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const storage = getStorage(app);
+// Erhalte Auth und Storage Instanzen
+const auth = getAuth(app);
+const storage = getStorage(app);
+
+// Erhalte Firestore Instanz
+const db = getFirestore(app);
+
+// Beispiel zum Zugriff auf eine Firestore-Sammlung
+const bestenlisteCollection = collection(db, "Bestenliste");
+
+// Beispiel für das Lesen von Daten aus der Firestore-Sammlung
+const readBestenlisteData = async () => {
+  try {
+    const querySnapshot = await getDocs(bestenlisteCollection);
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+    });
+  } catch (error) {
+    console.error("Fehler beim Lesen der Bestenliste:", error);
+  }
+};
+
+// Beispielaufruf zum Lesen der Bestenliste-Daten
+readBestenlisteData();
+
+// Exportiere die benötigten Instanzen
+export { app, auth, storage, db };
