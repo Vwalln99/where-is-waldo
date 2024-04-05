@@ -12,7 +12,7 @@ export default function Timer({stopped }:Props) {
         if (!stopped) {
           setSeconds((prevSeconds) => prevSeconds + 1);
         }
-      }, 1000);
+      }, 1000); //todo else wert speichern und sekunden auf null setzen
   
       return () => clearInterval(interval);
     }, [stopped]);

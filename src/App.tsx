@@ -85,7 +85,9 @@ function App() {
           <div className="figure-placeholder" style={{ position: 'absolute', left: '2%', top: '168%', width: '50px', height: '50px', 
           backgroundColor: 'green' }} onClick={() => handleFigureClick(2, 168)} />
           <div className="figure-placeholder" style={{ position: 'absolute', left: '69%', top: '144%', width: '80px', height: '60px', 
-          backgroundColor: 'blue' }} onClick={() => handleFigureClick(69, 144)} />
+          backgroundColor: 'blue' }} onClick={() => handleFigureClick(69, 144)} /> 
+          {/*todo: koordinaten aus der collection holen
+              todo: skalierung damit die kästchen auf ihrem platz bleiben */}
           {showLeaderboard && (
             <PlayerList
               players={[]} 
